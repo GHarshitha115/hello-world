@@ -1,0 +1,60 @@
+def main_fuc(m):
+    dic_1={}
+    for i in range (m):
+        p,q = map(int,input().split())
+        dic_1[p]=q
+    dic_1 = sorted(dic_1.items(),key=lambda x:x[0],reverse=True)  
+    return(dic_1)
+   
+def multiply_of_list(x,list_1):
+    dic={}
+    for k,v in list_1:
+        dic[k+x[0]]=v*x[1]
+    return (list(dic.items()))
+        
+def list_convert(degree,poly_list):
+    dic_1={};a=[]
+    for i in range (len(degree)):
+        a=[]
+        for j in range (len(poly_list)):
+            s=dict(poly_list[j])
+            if i  in s:
+                a.append(s[i])
+                
+        dic_1[i]=sum(a)     
+            
+    print(dic_1)      
+        
+               
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+m = int(input())
+x=main_fuc(m)
+n = int(input())
+y=main_fuc(n)
+poly_list=[];degree=[]
+for i in range (len(x)):
+    poly=multiply_of_list(x[i],y)
+    poly_list.append(poly)
+    
+    
+for i in range (len(poly_list)):
+    for j in range(len(poly_list[i])):
+        degree.append(poly_list[i][j][0])
+        
+        
+degree=set(degree);degree=list(degree)
+degree.sort(reverse=True)
+list_convert(degree,poly_list)
+    
